@@ -1,15 +1,16 @@
 var fs = require('fs');
-var chars = ".*SE"
+var chars = ".*SE";
 
 function createData(file) {
-    var charMap = {};
-    for (var c=0; c<chars.length; c++) {
-        charMap[chars[c]]=c;
+    var c, i, k, charMap = {},
+        array = file.toString().split("\n"),
+        data = [];
+    for (c = 0; c < chars.length; c += 1) {
+        charMap[chars[c]] = c;
     }
-    var array = file.toString().split("\n");
-    var data = [];
-    for(var i in array) {
-        for (var k in array[i]) {
+
+    for (i in array) {
+        for (k in array[i]) {
             data.push(charMap[array[i][k]]);
         }
     }
@@ -20,13 +21,15 @@ function createData(file) {
     };
 }
 
-fs.readFile('level-01.txt', function(err, file) {
-    if(err) throw err;
-    var data = createData(file);
-    var result = {};
+fs.readFile('level-01.txt', function (err, file) {
+    if (err) {
+        throw err;
+    }
+    var data = createData(file),
+        result = {};
     result.width = data.width;
     result.height = data.height;
-    result.layers = []
+    result.layers = [];
     result.layers.push(data);
     fs.writeFile("level-01.json", JSON.stringify(result));
 });

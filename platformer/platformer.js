@@ -61,7 +61,7 @@ window.onload = (function() {
         });
         var level = level01.layers[0];
         for (var x = 0; x<level.width; x++) {
-            for (var y = 0; y<level.height; y++) {
+            for (var y = 0; y < level.height; y += 1) {
                 var index = y * level.width + x;
                 var current = level.data[index];
                 if (current!==0) Crafty.e(tileMap[current]).attr({x: TILE_SIZE * x, y: TILE_SIZE * y});
