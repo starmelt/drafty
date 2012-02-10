@@ -1,3 +1,4 @@
+var Crafty = Crafty;
 window.onload = (function() {
     var WIDTH = 640, HEIGHT = 480, TILE_SIZE = 16, SPEED = TILE_SIZE/4, JUMP_H = SPEED;
     Crafty.init(WIDTH, HEIGHT);
